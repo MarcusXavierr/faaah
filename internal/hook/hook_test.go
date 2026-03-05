@@ -10,7 +10,7 @@ import (
 
 const (
 	testBinaryPath = "/usr/bin/faaah"
-	expectedHook   = "\n# >>> faaah hook >>>\ntrap '/usr/bin/faaah play' ERR\n# <<< faaah hook <<<\n"
+	expectedHook   = "\n# >>> faaah hook >>>\ntrap 'if [ -n \"$ZSH_VERSION\" ] && [ \"$ZSH_EVAL_CONTEXT\" != \"toplevel:trap\" ] && [ \"$ZSH_EVAL_CONTEXT\" != \"cmdarg:trap\" ]; then :; else (/usr/bin/faaah play >/dev/null 2>&1 &); fi' ERR\n# <<< faaah hook <<<\n"
 )
 
 func TestInstall(t *testing.T) {

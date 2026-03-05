@@ -114,7 +114,7 @@ The hook is wrapped in sentinel markers to enable idempotent install and clean u
 
 ```bash
 # >>> faaah hook >>>
-trap '/absolute/path/to/faaah play' ERR
+trap 'if [ -n "$ZSH_VERSION" ] && [ "$ZSH_EVAL_CONTEXT" != "toplevel:trap" ] && [ "$ZSH_EVAL_CONTEXT" != "cmdarg:trap" ]; then :; else (/absolute/path/to/faaah play >/dev/null 2>&1 &); fi' ERR
 # <<< faaah hook <<<
 ```
 
@@ -338,7 +338,7 @@ func Status(configPath string) (bool, error)
 When testing `Install`, the expected content appended should be exactly:
 ```
 \n# >>> faaah hook >>>
-trap '/usr/bin/faaah play' ERR
+trap 'if [ -n "$ZSH_VERSION" ] && [ "$ZSH_EVAL_CONTEXT" != "toplevel:trap" ] && [ "$ZSH_EVAL_CONTEXT" != "cmdarg:trap" ]; then :; else (/usr/bin/faaah play >/dev/null 2>&1 &); fi' ERR
 # <<< faaah hook <<<
 ```
 

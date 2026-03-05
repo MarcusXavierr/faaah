@@ -23,7 +23,7 @@ func Install(configPath string, binaryPath string) error {
 		return nil
 	}
 
-	hookBlock := fmt.Sprintf("\n%s\ntrap '%s play' ERR\n%s\n", MarkerStart, binaryPath, MarkerEnd)
+	hookBlock := fmt.Sprintf("\n%s\ntrap 'if [ -n \"$ZSH_VERSION\" ] && [ \"$ZSH_EVAL_CONTEXT\" != \"toplevel:trap\" ] && [ \"$ZSH_EVAL_CONTEXT\" != \"cmdarg:trap\" ]; then :; else (%s play >/dev/null 2>&1 &); fi' ERR\n%s\n", MarkerStart, binaryPath, MarkerEnd)
 
 	dir := filepath.Dir(configPath)
 	if err := os.MkdirAll(dir, 0755); err != nil {
