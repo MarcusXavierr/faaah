@@ -2,6 +2,8 @@
 
 > A self-contained Go CLI that hooks into your shell and plays a sound every time a command fails.
 
+https://github.com/user-attachments/assets/b9ff7cb1-72bf-4076-a561-e0e3ecedd9a3
+
 When working in a terminal, failed commands often go unnoticed — especially during long builds, test runs, or multi-step pipelines. `faaah` solves this by playing an audible "faaah" sound every time a shell command exits with a non-zero status code.
 
 You install the binary once, run `faaah install`, and from that point on, every failed command triggers the sound automatically. No manual setup, no external audio players, and no config files.
